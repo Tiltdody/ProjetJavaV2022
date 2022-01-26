@@ -1,11 +1,11 @@
 {% extends "blog/base.html" %}
 {%  block content %}
-  <h1>My shopping list</h1>
+  <h1>Liste des auteurs du blog</h1>
 
     <div>
-      <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
-      <button>Add item</button>
+      <label for="item">Entrez un Auteur :</label>
+      <input type="text" name="Ajouter" id="item">
+      <button class="btn btn-secondary" id="btnAjout" >Ajouter</button>
     </div>
 
     <ul>
@@ -13,11 +13,13 @@
     </ul>
 
     <script>
-      const list = document.querySelector('ul');
-      const input = document.querySelector('input');
-      const button = document.querySelector('button');
+      var list = document.querySelector('ul');
+      var input = document.querySelector('input');
+      var button = document.getElementById("btnAjout");
 
-      button.onclick = function() {
+      button.addEventListener("click", ajoutAuteur)
+
+      function ajoutAuteur() {
         let myItem = input.value;
         input.value = '';
 
@@ -28,7 +30,8 @@
         listItem.appendChild(listText);
         listText.textContent = myItem;
         listItem.appendChild(listBtn);
-        listBtn.textContent = 'Delete';
+        listBtn.textContent = 'Supprimer';
+        listBtn.className = 'btn btn-primary';
         list.appendChild(listItem);
 
         listBtn.onclick = function(e) {
